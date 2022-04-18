@@ -14,7 +14,7 @@ namespace SynapseWebAPI.Controllers
             this.querySynapse = querySynapse;
         }
 
-        [EnableQuery]
+        [EnableQuery(PageSize = 1000)]
         public ActionResult Get(ODataQueryOptions<ProspectiveBuyer> query)
         {
             return Ok(this.querySynapse.Query(query));

@@ -8,12 +8,12 @@
   </PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="CData.AzureSynapse.EntityFrameworkCore" Version="21.0.8091" />
 		<PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="5.0.0" />
 		<PackageReference Include="Microsoft.AspNetCore.OData" Version="8.0.9" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.4" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="6.0.4" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.4">
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.4" />
+			<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.4">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
@@ -24,17 +24,8 @@
 	</ItemGroup>
 
     <ItemGroup>
-        <Reference Include="System.Data.CData.AzureSynapse">
-            <HintPath>..\..\..\..\..\..\Program Files\CData\CData ADO.NET Provider for Azure Synapse 2021\lib\netstandard2.0\System.Data.CData.AzureSynapse.dll</HintPath>
-        </Reference>
-    </ItemGroup>
-
-    <ItemGroup>
         <None Update="appsettings.json">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-        </None>
-        <None Update="System.Data.CData.AzureSynapse.lic">
-          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </None>
     </ItemGroup>
 

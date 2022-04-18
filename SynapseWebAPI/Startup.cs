@@ -33,7 +33,7 @@ namespace SynapseWebAPI
                 .AddSingleton<IHttpContextAccessor, HttpContextAccessor>()
                 .AddScoped<IQuerySynapse, QuerySynapse>()
                 .AddDbContext<AzureSynapseContext>(options =>
-                    options.UseAzureSynapse(Configuration.GetConnectionString("AzureSynapseContext")));
+                    options.UseSqlServer(Configuration.GetConnectionString("AzureSynapseContext")));
             
             services.TryAddEnumerable(ServiceDescriptor.Transient<IApplicationModelProvider, ODataRoutingApplicationModelProvider>());
             services.TryAddEnumerable(ServiceDescriptor.Singleton<MatcherPolicy, ODataRoutingMatcherPolicy>());

@@ -7,6 +7,6 @@ namespace SynapseWebAPI
     {
         IQueryable<DimCustomer> Query(ODataQueryOptions<DimCustomer> query);
 
-        IQueryable Query(ODataQueryOptions<ProspectiveBuyer> query);
+        IQueryable<ProspectiveBuyer> Query(ODataQueryOptions<ProspectiveBuyer> query);
     }
 }
