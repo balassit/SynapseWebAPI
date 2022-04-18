@@ -1,7 +1,12 @@
-﻿namespace SynapseWebAPI
+﻿using Microsoft.AspNetCore.OData.Query;
+using SynapseWebAPI.Models;
+
+namespace SynapseWebAPI
 {
     public interface IQuerySynapse
     {
-        void Query();
+        IQueryable<DimCustomer> Query(ODataQueryOptions<DimCustomer> query);
+
+        IQueryable Query(ODataQueryOptions<ProspectiveBuyer> query);
     }
 }

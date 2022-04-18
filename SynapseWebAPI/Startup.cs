@@ -1,4 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc.ApplicationModels;
+using Microsoft.AspNetCore.OData;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+using Microsoft.OData.Edm;
+using Microsoft.OData.ModelBuilder;
+using SynapseWebAPI.Provider;
 
 namespace SynapseWebAPI
 {
@@ -15,13 +21,23 @@ namespace SynapseWebAPI
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services
+                .AddControllers()
+                .AddOData(options =>
+                {
+                    options.EnableQueryFeatures();
+                });
 
             services
+                .AddSingleton<IODataModelProvider, ODataModelProvider>()
                 .AddSingleton<IHttpContextAccessor, HttpContextAccessor>()
                 .AddScoped<IQuerySynapse, QuerySynapse>()
                 .AddDbContext<AzureSynapseContext>(options =>
                     options.UseAzureSynapse(Configuration.GetConnectionString("AzureSynapseContext")));
+            
+            services.TryAddEnumerable(ServiceDescriptor.Transient<IApplicationModelProvider, ODataRoutingApplicationModelProvider>());
+            services.TryAddEnumerable(ServiceDescriptor.Singleton<MatcherPolicy, ODataRoutingMatcherPolicy>());
+            services.AddSwaggerGen();
 
         }
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -35,6 +51,14 @@ namespace SynapseWebAPI
                 app.UseHsts();
             }
 
+            app.UseODataRouteDebug(); // Remove it if not needed
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "OData 8.x OpenAPI");
+            });
+
             app.UseRouting();
             app.UseAuthentication();
 
@@ -42,6 +66,8 @@ namespace SynapseWebAPI
             {
                 endpoints.MapControllers();
             });
+
+            app.UseHttpsRedirection();
 
             app.Use(async (context, next) =>
             {

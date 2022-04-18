@@ -1,13 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SynapseWebAPI.Models;
 
 namespace SynapseWebAPI
 {
-    public class ProspectiveBuyerKey
-    {
-        public string Id { get; set; }
-        public string ProductName { get; set; }
-    }
-
     public class AzureSynapseContext : DbContext
     {
         public AzureSynapseContext(DbContextOptions<AzureSynapseContext> options)
@@ -15,6 +10,9 @@ namespace SynapseWebAPI
         {
         }
 
-        public DbSet<ProspectiveBuyerKey> Products { get; set; }
+        public DbSet<ProspectiveBuyer> ProspectiveBuyer { get; set; }
+
+        public DbSet<DimCustomer> Customers { get; set; }
+
     }
 }
