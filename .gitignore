@@ -1,0 +1,77 @@
+.gitconfig
+
+# Build generated files in src
+obj/**/*
+/src/**/obj/**/*
+bin/**/*
+
+# MSBuild's log file
+msbuild.log
+
+*.projhash*
+*.slnhash*
+
+# Build.exe
+*.err
+*.wrn
+*.log
+*.prf
+*.trc
+buildd.dbb
+build.dbb
+buildd.evt
+build.evt
+
+# CloudBuild
+BuildSessionInfo.json
+QBuildResultStats.txt
+QLogs
+
+###
+Repository Bloat Risks
+###
+*.lib
+*.pdb
+*.wim
+*.zip
+*.gz
+
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+bld/
+[Bb]in/
+[Oo]bj/
+
+# Roslyn cache directories
+*.ide/
+
+# MSTest test Results
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+
+#NUNIT
+*.VisualState.xml
+TestResult.xml
+
+# ReSharper is a .NET coding add-in
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
+
+Prototypes/**/packages/*
+**/.vs/*
+**/packages/*
+
+*.sarif
+code-model-v1

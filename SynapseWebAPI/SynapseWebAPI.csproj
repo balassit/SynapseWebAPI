@@ -1,0 +1,47 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+	  <TargetFramework>net6.0-windows</TargetFramework>
+	  <UseWindowsForms>true</UseWindowsForms>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="CData.AzureSynapse.EntityFrameworkCore" Version="21.0.8091" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.4" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="6.0.4" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.4">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.1" />
+		<PackageReference Include="System.Configuration.ConfigurationManager" Version="6.0.0" />
+		<PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
+	</ItemGroup>
+
+    <ItemGroup>
+        <Reference Include="CData.EntityFrameworkCore.AzureSynapse">
+            <HintPath>..\..\..\..\..\..\Program Files\CData\CData ADO.NET Provider for Azure Synapse 2021\lib\net6.0\EFCORE60\CData.EntityFrameworkCore.AzureSynapse.dll</HintPath>
+        </Reference>
+        <Reference Include="System.Data.CData.AzureSynapse">
+            <HintPath>..\..\..\..\..\..\Program Files\CData\CData ADO.NET Provider for Azure Synapse 2021\lib\System.Data.CData.AzureSynapse.dll</HintPath>
+        </Reference>
+        <Reference Include="System.Data.CData.AzureSynapse.Designer">
+            <HintPath>..\..\..\..\..\..\Program Files\CData\CData ADO.NET Provider for Azure Synapse 2021\lib\System.Data.CData.AzureSynapse.Designer.dll</HintPath>
+        </Reference>
+		<Reference Include="System.Data.CData.AzureSynapse.Entities.EF6">
+			<HintPath>..\..\..\..\..\..\Program Files\CData\CData ADO.NET Provider for Azure Synapse 2021\lib\4.0\System.Data.CData.AzureSynapse.Entities.EF6.dll</HintPath>
+		</Reference>	
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Update="appsettings.json">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Update="licenses.licx">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+    </ItemGroup>
+
+</Project>
